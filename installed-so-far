@@ -12,3 +12,6 @@ sudo apt-get install socat dwm zenity xclip python-gtk2-dev
 sudo apt-get install git git-core libwebkit-dev
 sudo apt-get install git git-core libwebkit*dev
 cat ~/.bash_history | grep "apt-get install" > ~/dotfiles/installed-so-far
+sudo apt-get install compton
+sudo apt-get install dpkg-dev
+sudo apt-get install libpangox*
