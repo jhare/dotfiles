@@ -1,0 +1,14 @@
+sudo apt-get install git build-essential htop nmap curl wget virtualbox mercurial rustc tig
+sudo apt-get install stow
+sudo apt-get install suckless-tools 
+sudo apt-get install tree
+cat ~/.bash_history | grep "apt-get install"
+cat ~/.bash_history | grep "apt-get install" > ~/dotfiles/installed-so-far
+sudo apt-get install awesome conky*
+sudo apt-get install awesome conky-all terminator
+sudo apt-get install rustc clang-5.0 electric-fence valgrind*
+sudo apt-get install socat dwm-tools zenity xclip python-gtk2-dev
+sudo apt-get install socat dwm zenity xclip python-gtk2-dev
+sudo apt-get install git git-core libwebkit-dev
+sudo apt-get install git git-core libwebkit*dev
+cat ~/.bash_history | grep "apt-get install" > ~/dotfiles/installed-so-far
