@@ -61,3 +61,5 @@ map <leader>n :NERDTreeToggle<CR>
 
 " Settings for linter
 let g:neomake_javascript_enabled_makers = ['eslint']
+
+set mouse=a
