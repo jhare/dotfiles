@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 run() {
-  echo Hello
   if ! pgrep $1 ;
   then
     $@&
@@ -10,3 +9,4 @@ run() {
 
 run compton
 run nm-applet
+run ~/.fehbg
