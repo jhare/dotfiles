@@ -179,12 +179,24 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+
+-- define custom taglists for each screen. use the index in the connect_ loop below for reference
+layouts = awful.layout.layouts
+tags = {
+  settings = {
+    { names  = { "www", "editor", "editor", "editor" },
+      layout = layouts
+    },
+    { names  = { "doc",  "reading", "irc'n'stuff",  "media" },
+      layout = layouts
+}}}
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
-    -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    -- Set a different set of tags for each screen
+    tags[s] = awful.tag(tags.settings[s.index].names, s, tags.settings[s.index].layout)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -472,9 +484,10 @@ awful.rules.rules = {
       }, properties = { floating = true }},
 
     -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
-    },
+    -- jhare: hide all titlebars fuck that shit
+    -- { rule_any = {type = { "normal", "dialog" }
+      -- }, properties = { titlebars_enabled = true }
+    -- },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
@@ -538,15 +551,6 @@ client.connect_signal("request::titlebars", function(c)
         layout = wibox.layout.align.horizontal
     }
 end)
-
--- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-        and awful.client.focus.filter(c) then
-        client.focus = c
-    end
-end)
-
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+--
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")
