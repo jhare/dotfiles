@@ -2,8 +2,6 @@ sudo apt-get install git build-essential htop nmap curl wget virtualbox mercuria
 sudo apt-get install stow
 sudo apt-get install suckless-tools 
 sudo apt-get install tree
-cat ~/.bash_history | grep "apt-get install"
-cat ~/.bash_history | grep "apt-get install" > ~/dotfiles/installed-so-far
 sudo apt-get install awesome conky*
 sudo apt-get install awesome conky-all terminator
 sudo apt-get install rustc clang-5.0 electric-fence valgrind*
@@ -11,7 +9,27 @@ sudo apt-get install socat dwm-tools zenity xclip python-gtk2-dev
 sudo apt-get install socat dwm zenity xclip python-gtk2-dev
 sudo apt-get install git git-core libwebkit-dev
 sudo apt-get install git git-core libwebkit*dev
-cat ~/.bash_history | grep "apt-get install" > ~/dotfiles/installed-so-far
 sudo apt-get install compton
 sudo apt-get install dpkg-dev
 sudo apt-get install libpangox*
+sudo apt-get install gdebi
+sudo apt-get install steam
+sudo apt-get install nvidia-370
+sudo apt-get install nvidia-387
+sudo apt-get install steam
+sudo apt-get install steam
+sudo apt-get install unetbootin
+sudo apt-get install taskwarrior
+sudo apt-get install thyme
+sudo apt-get install gem
+sudo apt-get install ruby
+sudo apt-get install gimp
+sudo apt-get install build-essential cmake
+sudo apt-get install gimp
+sudo apt-get install silversearcher-ag
+sudo apt-get install vlc
+sudo apt-get install dosbox
+sudo apt-get install pulseaudio-module-bluetoot
+sudo apt-get install blueman
+sudo apt-get install emscripten
+sudo apt-get install default-jdk
