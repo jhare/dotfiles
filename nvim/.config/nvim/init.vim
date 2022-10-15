@@ -66,6 +66,7 @@ let g:airline_theme='bubblegum'
 
 " Keybindings
 map <leader>n :NERDTreeToggle<CR>
+map <leader>f :silent! Autoformat<CR>
 
 " Settings for linter
 let g:neomake_javascript_enabled_makers = ['eslint']
@@ -75,3 +76,7 @@ set mouse=a
 " Rust settings
 let g:formatdef_rustfmt = '"rustfmt"'
 let g:formatters_rust = ['rustfmt']
+
+" Do not enter new comment on next line if you have entered one on current.
+" Done with that annoyance. I'll add the // when I need it.
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
