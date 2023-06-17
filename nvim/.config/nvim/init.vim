@@ -26,17 +26,39 @@ set splitbelow
 
 call plug#begin() 
 
+" Core/pope
+Plug 'Shougo/vimproc.vim' " parallel vim processing
 Plug 'scrooloose/nerdtree' " file tree
 Plug 'tpope/vim-fugitive' " git utilities
-Plug 'tpope/vim-surround' " change surrounding
-
+Plug 'tpope/vim-surround' " change surroundingCocInstall coc-json coc-tsserver
 Plug 'vim-airline/vim-airline' " neato statusline
 Plug 'vim-airline/vim-airline-themes' " and its themes
-Plug 'w0rp/ale' " asynchronous linter
-Plug 'leafgarland/typescript-vim' " linter for typescript
+Plug 'Shougo/deol.nvim'
 Plug 'Quramy/tsuquyomi'
-Plug 'Shougo/vimproc.vim' " parallel vim processing
-Plug 'Valloric/YouCompleteMe'
+
+" Bigtime Conquer of Completion setup
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+  \ 'coc-tsserver'
+  \ ]
+
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
+
+" Plug 'w0rp/ale' " asynchronous linter
+Plug 'leafgarland/typescript-vim' " linter for typescript
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
+
+" Javascript setup. When we enter a .js file we want to set the syntax to
+" fully scan the file. When we leave, we want to clear that flag.
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+" Settings for linter
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 " Color schemes
 Plug 'nightsense/vim-crunchbang'
@@ -44,6 +66,9 @@ Plug 'sickill/vim-monokai'
 Plug 'junegunn/seoul256.vim'
 Plug 'exitface/synthwave.vim'
 Plug 'zcodes/vim-colors-basic'
+
+" AI Stuff
+Plug 'github/copilot.vim'
 
 " Python stuff
 Plug 'python-mode/python-mode', {'branch': 'develop'} " this really catches everything
@@ -59,14 +84,10 @@ let g:airline_theme='bubblegum'
 " Keybindings
 map <leader>n :NERDTreeToggle<CR>
 
-" Settings for linter
-let g:neomake_javascript_enabled_makers = ['eslint']
-
+" I use the mouse sometimes. Ironically, it works really well.
 set mouse=a
 
-
 "" turn on completion in comments
-
 let g:ycm_complete_in_comments=1
 "" load ycm conf by default
 let g:ycm_confirm_extra_conf=0
