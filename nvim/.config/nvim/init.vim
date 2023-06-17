@@ -30,7 +30,13 @@ call plug#begin()
 Plug 'Shougo/vimproc.vim' " parallel vim processing
 Plug 'scrooloose/nerdtree' " file tree
 Plug 'tpope/vim-fugitive' " git utilities
-Plug 'tpope/vim-surround' " change surroundingCocInstall coc-json coc-tsserver
+Plug 'tpope/vim-surround' " change surrounding
+
+" from Linode tutorial
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'inducer/pudb'
+
 Plug 'vim-airline/vim-airline' " neato statusline
 Plug 'vim-airline/vim-airline-themes' " and its themes
 Plug 'Shougo/deol.nvim'
@@ -61,7 +67,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 let g:neomake_javascript_enabled_makers = ['eslint']
 
 " Color schemes
-Plug 'nightsense/vim-crunchbang'
+Plug 'jhare/vim-crunchbang'
 Plug 'sickill/vim-monokai'
 Plug 'junegunn/seoul256.vim'
 Plug 'exitface/synthwave.vim'
@@ -83,6 +89,7 @@ let g:airline_theme='bubblegum'
 
 " Keybindings
 map <leader>n :NERDTreeToggle<CR>
+map <leader>f :silent! Autoformat<CR>
 
 " I use the mouse sometimes. Ironically, it works really well.
 set mouse=a
@@ -101,3 +108,11 @@ let g:ycm_min_num_of_chars_for_completion=1
 let g:ycm_cache_omnifunc=0
 "" complete syntax keywords
 let g:ycm_seed_identifiers_with_syntax=1
+
+" Rust settings
+let g:formatdef_rustfmt = '"rustfmt"'
+let g:formatters_rust = ['rustfmt']
+
+" Do not enter new comment on next line if you have entered one on current.
+" Done with that annoyance. I'll add the // when I need it.
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
